@@ -39,7 +39,7 @@ class SpaceObject:
 
     def move(self, space_objects, dt=1):
         Fx = Fy = 0
-        x_sign = 1  # направление оси X у программы (1 - если вправо, -1 - если влево)
+        x_sign =  1  # направление оси X у программы (1 - если вправо, -1 - если влево)
         y_sign = -1  # направление оси Y у программы (1 - если вверх, -1 - если вниз)
 
         for obj in space_objects:
@@ -56,11 +56,11 @@ class SpaceObject:
             Fy += y_sign * force * y / r
         ax, ay = Fx / self.m, Fy / self.m
         self.x += self.Vx * dt + 0.5 * ax * dt ** 2
-        self.y += self.Vy * dt + 0.5 * ay * dt ** 2
+        self.y += y_sign * self.Vy * dt + 0.5 * ay * dt ** 2
         self.Vx += ax * dt
         self.Vy += ay * dt
         # FIXED write simple move func like solar_model.py move_space_object()
-        # FIXME планеты почему-то двигаются не вокруг Солнца, а по другим траекториям
+        # FIXED планеты почему-то двигаются не вокруг Солнца, а по другим траекториям
 
     def draw(self, surface):
         pg.draw.circle(surface, (255, 255, 255),
