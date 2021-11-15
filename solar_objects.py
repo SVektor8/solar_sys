@@ -4,6 +4,7 @@
 from typing import List
 import pygame as pg
 from solar_vis import scale_y, scale_x
+from config import colors
 
 gravitational_constant = 6.67408E-11
 """Гравитационная постоянная Ньютона G"""
@@ -63,7 +64,7 @@ class SpaceObject:
         # FIXED планеты почему-то двигаются не вокруг Солнца, а по другим траекториям
 
     def draw(self, surface):
-        pg.draw.circle(surface, (255, 255, 255),
+        pg.draw.circle(surface, colors.get(self.color),
                            (scale_x(self.x), scale_y(self.y)), self.R)
 
-        # FIXME добавить рисование объектов цветами, указанными в self.color, используя colors из config.py
+        # FIXED добавить рисование объектов цветами, указанными в self.color, используя colors из config.py
