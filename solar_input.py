@@ -29,49 +29,6 @@ def read_space_objects_data_from_file(input_filename):
     return [DrawableObject(obj) for obj in objects]
 
 
-def parse_star_parameters(line, star):
-    """Считывает данные о звезде из строки.
-
-    Входная строка должна иметь слеюущий формат:
-
-    Star <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
-
-    Здесь (x, y) — координаты зведы, (Vx, Vy) — скорость.
-
-    Пример строки:
-
-    Star 10 red 1000 1 2 3 4
-
-    Параметры:
-
-    **line** — строка с описание звезды.
-
-    **star** — объект звезды.
-    """
-    pass   # FIXED: допишите парсер  - парсит при создании класса SpaceObject
-
-
-def parse_planet_parameters(line, planet):
-    """Считывает данные о планете из строки.
-    Входная строка должна иметь слеюущий формат:
-
-    Planet <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
-
-    Здесь (x, y) — координаты планеты, (Vx, Vy) — скорость.
-
-    Пример строки:
-
-    Planet 10 red 1000 1 2 3 4
-
-    Параметры:
-
-    **line** — строка с описание планеты.
-
-    **planet** — объект планеты.
-    """
-    pass  # FIXED: допишите парсер  - парсит при создании класса SpaceObject
-
-
 def write_space_objects_data_to_file(output_filename, space_objects):
     """Сохраняет данные о космических объектах в файл.
 

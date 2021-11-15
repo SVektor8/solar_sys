@@ -14,10 +14,10 @@ header_font = "Arial-16"
 window_width = 900
 """Ширина окна"""
 
-window_height = 12
+window_height = 1200
 """Высота окна"""
 
-scale_factor = 1
+scale_factor = 10
 """Масштабирование экранных координат по отношению к физическим.
 
 Тип: float
@@ -57,7 +57,8 @@ def scale_y(y):
 
     **y** — y-координата модели.
     """
-    return int(y*scale_factor) + window_width//2 # FIXED должно быть достаточно, так как направление оси учитывается в SpaceObject.move()
+    return int(y*scale_factor) + window_width//2
+    # FIXED должно быть достаточно, так как направление оси учитывается в SpaceObject.move()
 
 
 
@@ -85,4 +86,7 @@ class DrawableObject:
         self.obj = obj
 
     def draw(self, surface):
-            pass  # FIXME  пока не знаю, как лучше реализовать
+        print(self.obj)
+        pg.draw.circle(surface, (255, 255, 255),
+                       (scale_x(self.obj.x), scale_y(self.obj.y)), self.obj.R)
+        pass  # FIXED  пока не знаю, как лучше реализовать
