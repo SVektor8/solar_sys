@@ -57,7 +57,7 @@ def scale_y(y):
 
     **y** — y-координата модели.
     """
-    pass  # FIXME
+    return int(y*scale_factor) + window_width//2 # FIXED должно быть достаточно, так как направление оси учитывается в SpaceObject.move()
 
 
 
@@ -85,4 +85,4 @@ class DrawableObject:
         self.obj = obj
 
     def draw(self, surface):
-            pass  # FIXME
+            pass  # FIXME  пока не знаю, как лучше реализовать

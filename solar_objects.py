@@ -71,8 +71,8 @@ class SpaceObject:
 
     def move(self, space_objects, dt=1):
         Fx = Fy = 0
-        x_sign = 1   # направление оси X (1 - если вправо, -1 - если влево)
-        y_sign = 1   # направление оси Y (1 - если вверх, -1 - если вниз)
+        x_sign = 1   # направление оси X у программы (1 - если вправо, -1 - если влево)
+        y_sign = -1   # направление оси Y у программы (1 - если вверх, -1 - если вниз)
 
         for obj in space_objects:
             if self == obj:
@@ -90,9 +90,13 @@ class SpaceObject:
         self.Vy += ay*dt
         # FIXED write simple move func like solar_model.py move_space_object()
 
+
+
+''' не вижу смысла, сделал изменения в связи с этим в solar.input
 class Star(SpaceObject):
     color = "red"
 
 
 class Planet(SpaceObject):
     color = "green"
+'''

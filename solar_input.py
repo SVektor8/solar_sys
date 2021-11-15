@@ -1,7 +1,7 @@
 # coding: utf-8
 # license: GPLv3
 
-from solar_objects import Star, Planet
+from solar_objects import SpaceObject
 from solar_vis import DrawableObject
 
 
@@ -21,17 +21,11 @@ def read_space_objects_data_from_file(input_filename):
                 continue  # пустые строки и строки-комментарии пропускаем
 
             object_type = line.split()[0].lower()
-            if object_type == "star":
-                star = Star(line)
-                #parse_star_parameters(line, star)
-                objects.append(star)
-            elif object_type == "planet":
-                planet = Planet(line)
-                #parse_planet_parameters(line, planet)
-                objects.append(planet)
+            if object_type == "star" or object_type == "planet":
+                object = SpaceObject(line)
+                objects.append(object)
             else:
                 print("Unknown space object")
-
     return [DrawableObject(obj) for obj in objects]
 
 
@@ -54,7 +48,7 @@ def parse_star_parameters(line, star):
 
     **star** — объект звезды.
     """
-    pass  # FIXME: допишите парсер
+    pass   # FIXED: допишите парсер  - парсит при создании класса SpaceObject
 
 
 def parse_planet_parameters(line, planet):
@@ -75,7 +69,7 @@ def parse_planet_parameters(line, planet):
 
     **planet** — объект планеты.
     """
-    pass  # FIXME: допишите парсер
+    pass  # FIXED: допишите парсер  - парсит при создании класса SpaceObject
 
 
 def write_space_objects_data_to_file(output_filename, space_objects):
@@ -95,8 +89,8 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     """
     with open(output_filename, 'w') as out_file:
         for obj in space_objects:
-            print(out_file, "%s %d %s %f" % ('1', 2, '3', 4.5))
-            # FIXME! use __str__ of space objects
+            print(out_file, str(obj))
+            # FIXED! use __str__ of space objects - сейчас может быть использовано
 
 
 if __name__ == "__main__":
