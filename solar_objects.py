@@ -78,7 +78,7 @@ class SpaceObject:
             if self == obj:
                 continue
             r = ((self.x - obj.x)**2 + (self.y - obj.y)**2)**0.5
-                                                                            # FIXME нет обработки аномалий при столкновении, но, возможно, её и не нужно делать              
+            r = max(r, self.R + obj.R)                                      # FIXED вариант небольшого фикса обработки аномалий при прохождении планет друг через друга
             x , y = obj.x - self.x, obj.y - self.y                          # векторы расстояний от тела до другого объекта
             force = gravitational_constant * self.m * obj.m / r**2
             Fx += x_sign * force * x / r
