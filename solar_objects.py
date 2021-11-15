@@ -63,10 +63,7 @@ class SpaceObject:
         # FIXME планеты почему-то двигаются не вокруг Солнца, а по другим траекториям
 
     def draw(self, surface):
-        if self.type == "star":
-            pg.draw.circle(surface, (255, 0, 0),
+        pg.draw.circle(surface, (255, 255, 255),
                            (scale_x(self.x), scale_y(self.y)), self.R)
-            print(scale_x(self.x), scale_y(self.y))
-        else:
-            pg.draw.circle(surface, (255, 255, 255),
-                           (scale_x(self.x), scale_y(self.y)), self.R)
+
+        # FIXME добавить рисование объектов цветами, указанными в self.color, используя colors из config.py

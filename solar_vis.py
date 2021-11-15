@@ -2,20 +2,12 @@
 # license: GPLv3
 
 import pygame as pg
+import config as cf
 
 """Модуль визуализации.
 Нигде, кроме этого модуля, не используются экранные координаты объектов.
 Функции, создающие гaрафические объекты и перемещающие их на экране, принимают физические координаты
 """
-
-header_font = "Arial-16"
-"""Шрифт в заголовке"""
-
-window_width = 900
-"""Ширина окна"""
-
-window_height =600
-"""Высота окна"""
 
 scale_factor = 1
 """Масштабирование экранных координат по отношению к физическим.
@@ -28,7 +20,7 @@ scale_factor = 1
 def calculate_scale_factor(max_distance):
     """Вычисляет значение глобальной переменной **scale_factor** по данной характерной длине"""
     global scale_factor
-    scale_factor = 0.5*min(window_height, window_width)/max_distance
+    scale_factor = 0.5 * min(cf.window_height, cf.window_width) / max_distance
     print('Scale factor:', scale_factor)
 
 
@@ -43,7 +35,7 @@ def scale_x(x):
     **x** — x-координата модели.
     """
 
-    return int(x*scale_factor) + window_width//2
+    return int(x * scale_factor) + cf.window_width // 2
 
 
 def scale_y(y):
@@ -57,9 +49,8 @@ def scale_y(y):
 
     **y** — y-координата модели.
     """
-    return int(y*scale_factor) + window_height//2
+    return int(y * scale_factor) + cf.window_height // 2
     # FIXED должно быть достаточно, так как направление оси учитывается в SpaceObject.move()
-
 
 
 if __name__ == "__main__":
@@ -70,12 +61,11 @@ class Drawer:
     def __init__(self, screen):
         self.screen = screen
 
-
     def update(self, figures, ui):
         self.screen.fill((0, 0, 0))
         for figure in figures:
             figure.draw(self.screen)
-        
+
         ui.blit()
         ui.update()
         pg.display.update()
