@@ -18,7 +18,7 @@ model_time = 0
 """Физическое время от начала расчёта.
 Тип: float"""
 
-time_scale = 10000000.0
+time_scale = 1000.0
 """Шаг по времени при моделировании.
 Тип: float"""
 
@@ -81,7 +81,8 @@ def execution(delta):
     global displayed_time
 
     for obj in space_objects:
-        obj.move(space_objects, delta)
+        for i in range(1, 300):
+            obj.move(space_objects, delta)
 
     model_time += delta
 
@@ -142,7 +143,7 @@ def slider_reaction(event):
 
 def init_ui(screen):
     global browser
-    slider = thorpy.SliderX(100, (-10, 10), "Simulation speed")
+    slider = thorpy.SliderX(100, (1, 5), "Simulation speed")
     slider.user_func = slider_reaction
     button_stop = thorpy.make_button("Quit", func=stop_execution)
     button_pause = thorpy.make_button("Pause", func=pause_execution)
@@ -212,7 +213,7 @@ def main():
 
         last_time = cur_time
         drawer.update(space_objects, box)
-        time.sleep(1.0 / 60)
+        time.sleep(1.0 / 120)
 
     print('Modelling finished!')
 
