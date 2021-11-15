@@ -4,6 +4,7 @@
 from solar_objects import Star, Planet
 from solar_vis import DrawableObject
 
+
 def read_space_objects_data_from_file(input_filename):
     """Cчитывает данные о космических объектах из файла, создаёт сами объекты
     и вызывает создание их графических образов
@@ -21,12 +22,12 @@ def read_space_objects_data_from_file(input_filename):
 
             object_type = line.split()[0].lower()
             if object_type == "star":
-                star = Star()
-                parse_star_parameters(line, star)
+                star = Star(line)
+                #parse_star_parameters(line, star)
                 objects.append(star)
             elif object_type == "planet":
-                planet = Planet()
-                parse_planet_parameters(line, planet)
+                planet = Planet(line)
+                #parse_planet_parameters(line, planet)
                 objects.append(planet)
             else:
                 print("Unknown space object")
@@ -55,6 +56,7 @@ def parse_star_parameters(line, star):
     """
     pass  # FIXME: допишите парсер
 
+
 def parse_planet_parameters(line, planet):
     """Считывает данные о планете из строки.
     Входная строка должна иметь слеюущий формат:
@@ -75,6 +77,7 @@ def parse_planet_parameters(line, planet):
     """
     pass  # FIXME: допишите парсер
 
+
 def write_space_objects_data_to_file(output_filename, space_objects):
     """Сохраняет данные о космических объектах в файл.
 
@@ -93,7 +96,7 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     with open(output_filename, 'w') as out_file:
         for obj in space_objects:
             print(out_file, "%s %d %s %f" % ('1', 2, '3', 4.5))
-            # FIXME!
+            # FIXME! use __str__ of space objects
 
 
 if __name__ == "__main__":
